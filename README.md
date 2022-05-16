@@ -12,13 +12,14 @@ print()
 
 for i in range(1, len(input_df.columns)):
   print("{: <12} mean = {:.2f}".format(input_df.columns[i], input_matrix[ :  , i].mean()))
-  generation_sum = (input_matrix[69840:70128, 1 : 2]).sum(axis = 1)
+  generation_sum = (input_matrix[69840:70128, 1])
 print(generation_sum)
-generation_sum_1 = (input_matrix[69840:70128, 2 : 4]).sum(axis = 1)
+generation_sum_1 = (input_matrix[69840:70128, 2])
 print(generation_sum_1)
 generation_sum_1+generation_sum
-a=np.amax(generation_sum_1+generation_sum)
-print(a)
+a=np.max(generation_sum_1+generation_sum)
+i = np.argmax(generation_sum_1+generation_sum)
+print(a, i)
 from bokeh.plotting import figure, output_file, show
 from bokeh.io import output_notebook
 output_notebook()
@@ -26,6 +27,6 @@ print('Сумма двух разрезов')
 p = figure(plot_width = 600, plot_height = 300)
 
 p.line(np.arange(len(generation_sum_1+generation_sum)), generation_sum_1+generation_sum, line_width = 3)
-p.circle(x=268, y=a,
+p.circle(x=i, y=a,
            color='green', size=10, alpha=0.5)
 show(p)
