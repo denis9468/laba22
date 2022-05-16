@@ -28,5 +28,8 @@ p = figure(plot_width = 600, plot_height = 300)
 
 p.line(np.arange(len(generation_sum_1+generation_sum)), generation_sum_1+generation_sum, line_width = 3)
 p.circle(x=i, y=a,
-           color='green', size=10, alpha=0.5)
+           color='green', size=7, alpha=0.5)
 show(p)
+plt.savefig('image')
+data_frame = pd.DataFrame(0)
+data_frame.to_excel('summ.xlsx', index = False, header = ['Data'])
